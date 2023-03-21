@@ -74,7 +74,7 @@ export class LoginComponent implements AfterViewInit {
           localStorage.removeItem('email');
         }
         //Navegamos al dashboard
-        this.router.navigateByUrl('/dashboard gpo');
+        this.router.navigateByUrl('/dashboard');
       },
       error: (err) => {
         Swal.fire({

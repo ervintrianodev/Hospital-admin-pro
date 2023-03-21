@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Sample Form with the Icons</h4>
+        <h6 class="card-subtitle">made with bootstrap elements</h6>
+        <form
+          class="form p-t-20"
+          [formGroup]="profileForm"
+          (ngSubmit)="actualizarPerfil()"
+        >
+          <div class="form-group">
+            <label for="exampleInputuname">User Name</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-user"></i></div>
+              <input
+                type="text"
+                class="form-control"
+                id="exampleInputuname"
+                formControlName="nombre"
+                placeholder="Nombre"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <div class="input-group">
+              <div class="input-group-addon"><i class="ti-email"></i></div>
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                formControlName="email"
+                placeholder="Introduce email"
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-success waves-effect waves-light m-r-10"
+            [disabled]="this.profileForm.invalid"
+          >
+            Guardar usuario
+          </button>
+          <button type="reset" class="btn btn-inverse waves-effect waves-light">
+            Limpiar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--CARGAR IMAGEN-->
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">Cambiar imagen</div>
+        <figure class="text-center">
+          <img
+            *ngIf="!imgTem"
+            [src]="usuario.getImageUrl"
+            class="img-avatar"
+            alt=""
+          />
+          <img *ngIf="imgTem" [src]="imgTem" class="img-avatar" alt="" />
+        </figure>
+        <input
+          type="file"
+          class="form-control"
+          (change)="changeImage($event)"
+        />
+
+        <button
+          type="button"
+          (click)="uploadImage()"
+          class="btn btn-success waves-effect waves-light m-r-10 mt-4"
+          [disabled]="image === undefined"
+        >
+          Cambiar imagen
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
