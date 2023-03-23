@@ -48,7 +48,7 @@ export class PerfilComponent implements OnInit {
       .updatePhoto(this.image, 'usuarios', localStorage.getItem('uid') || '')
       .then((resp) => {
         console.log(resp);
-        this.usuario.img = resp.nombreArchivo;
+        this.usuario.imagen = resp.nombreArchivo;
         Swal.fire({
           title: 'Imagen actualizada',
           text: 'La imagen del usuario ha sido actualizada con exito!',
@@ -62,7 +62,7 @@ export class PerfilComponent implements OnInit {
         console.log(resp);
         this.usuario.nombre = resp.usuario.nombre;
         this.usuario.email = resp.usuario.email;
-        this.usuario.img = resp.usuario.img;
+        this.usuario.imagen = resp.usuario.imagen;
         Swal.fire({
           title: 'Usuario actualizado',
           text: resp.msg,

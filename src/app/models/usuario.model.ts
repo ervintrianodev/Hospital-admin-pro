@@ -1,21 +1,20 @@
 import { environment } from 'src/environments/environment';
 
 export class Usuario {
-  public uid?: string;
+  public _id?: string;
   public nombre: string = '';
   public email: string = '';
   public password?: string = '';
-  public img?: string = 'no-image';
+  public imagen?: string = 'no-image';
   public google?: boolean = false;
   public role?: string = 'USER_ROLE';
   constructor() {}
 
   get getImageUrl() {
-    if (this.img?.includes('https')) {
-      return this.img;
-    }
-    if (this.img) {
-      return `${environment.baseUrl}/api/uploads/usuarios/${this.img}`;
+    if (this.imagen?.includes('https')) {
+      return this.imagen;
+    } else if (this.imagen) {
+      return `${environment.baseUrl}/api/uploads/usuarios/${this.imagen}`;
     } else {
       return `${environment.baseUrl}/api/uploads/usuarios/no-image`;
     }

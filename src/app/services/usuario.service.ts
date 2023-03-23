@@ -16,7 +16,7 @@ export class UsuarioService {
     return localStorage.getItem('token') || '';
   }
   get uid() {
-    return this.usuario.uid || '';
+    return this.usuario._id || '';
   }
   constructor(private httpClient: HttpClient) {}
 
@@ -47,6 +47,12 @@ export class UsuarioService {
       }
     );
   }
+  public updateUsuario(user: Usuario) {
+    const url = `${this.baseUrl}/api/users/${user._id}`;
+    return this.httpClient.put(url, user, {
+      headers: { 'x-api-key': localStorage.getItem('token') || '' },
+    });
+  }
   public login(formData: LoginForm) {
     return this.httpClient.post(`${this.baseUrl}/login`, formData).pipe(
       tap((response: any) => {
@@ -54,11 +60,11 @@ export class UsuarioService {
         this.usuario.email = email;
         this.usuario.nombre = nombre;
         this.usuario.password = '';
-        this.usuario.img = imagen;
-        this.usuario.uid = _id;
+        this.usuario.imagen = imagen;
+        this.usuario._id = _id;
         this.usuario.role = role;
         localStorage.setItem('token', response.token);
-        localStorage.setItem('uid', this.usuario.uid || '');
+        localStorage.setItem('uid', this.usuario._id || '');
       })
     );
   }
@@ -87,5 +93,21 @@ export class UsuarioService {
           return true;
         })
       );
+  }
+
+  public cargarUsuariosPaginados(desde: number = 0) {
+    const url = `${this.baseUrl}/api/users?from=${desde}`;
+    return this.httpClient.get(url, {
+      headers: {
+        'x-api-key': localStorage.getItem('token') || '',
+      },
+    });
+  }
+
+  public eliminarUsuario(id: string) {
+    const url = `${this.baseUrl}/api/users/${id}`;
+    return this.httpClient.delete(url, {
+      headers: { 'x-api-key': localStorage.getItem('token') || '' },
+    });
   }
 }

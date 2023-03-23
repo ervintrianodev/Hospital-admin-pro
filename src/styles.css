@@ -2,3 +2,11 @@
 #themecolors .selector{
 cursor: pointer;
 }
+.avatar{
+    width: 50px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.img-avatar {
+    width: 200px;
+}

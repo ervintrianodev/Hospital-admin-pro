@@ -25,8 +25,6 @@ export class FileUploadService {
       });
       const data = await resp.json();
       return data;
-
-      return true;
     } catch (error) {
       console.log(`Ha ocurrido un error al cargar la imagen ${error}`);
       return false;

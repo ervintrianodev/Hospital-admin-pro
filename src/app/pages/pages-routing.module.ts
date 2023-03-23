@@ -4,6 +4,9 @@ import { AuthGuard } from '../guards/auth.guard';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Grafica1Component } from './grafica1/grafica1.component';
+import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
+import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
+import { UsuarioComponent } from './mantenimientos/usuario/usuario.component';
 import { PagesComponent } from './pages.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { ProgressComponent } from './progress/progress.component';
@@ -45,6 +48,22 @@ const routes: Routes = [
         path: 'perfil',
         component: PerfilComponent,
         data: { titulo: 'Perfil' },
+      },
+      // +======================rutas para los mantenimientos===============
+      {
+        path: 'usuarios',
+        component: UsuarioComponent,
+        data: { titulo: 'Usuarios' },
+      },
+      {
+        path: 'medicos',
+        component: MedicosComponent,
+        data: { titulo: 'Medicos' },
+      },
+      {
+        path: 'hospitales',
+        component: HospitalesComponent,
+        data: { titulo: 'Hospitales' },
       },
       { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RXJS' } },
       { path: '**', redirectTo: '' },
